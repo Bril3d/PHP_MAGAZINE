@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2022 at 01:54 AM
+-- Generation Time: Oct 01, 2022 at 04:18 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -24,6 +24,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `article`
+--
+
+CREATE TABLE `article` (
+  `id` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `description` text NOT NULL,
+  `img` varchar(200) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `article`
+--
+
+INSERT INTO `article` (`id`, `title`, `description`, `img`, `user_id`) VALUES
+(1, 'article', '                                                                                                                                                        Place <em>some</em> <u>text</u> <strong>here or there</strong>                                                                                                ', 'css-3.svg', 6);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `category`
 --
 
@@ -40,10 +61,8 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`, `img`, `icon`, `user_id`) VALUES
-(12, 'travel', 'travel', 'travel', 6),
-(15, 'food', 'food', 'food', 6),
-(17, 'anime', '', 'anime', 6),
-(21, 'html5', 'html-1.svg', 'html5', 6);
+(21, 'html5', 'html-1.svg', 'html5', 6),
+(24, 'css', 'css-3.svg', 'css', 6);
 
 -- --------------------------------------------------------
 
@@ -98,6 +117,13 @@ INSERT INTO `user` (`id`, `name`, `email`, `password`) VALUES
 --
 
 --
+-- Indexes for table `article`
+--
+ALTER TABLE `article`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
@@ -128,10 +154,16 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `article`
+--
+ALTER TABLE `article`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `contact`
@@ -156,10 +188,16 @@ ALTER TABLE `user`
 --
 
 --
+-- Constraints for table `article`
+--
+ALTER TABLE `article`
+  ADD CONSTRAINT `article_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
 -- Constraints for table `category`
 --
 ALTER TABLE `category`
-  ADD CONSTRAINT `category_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `category_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
 -- Constraints for table `setting`

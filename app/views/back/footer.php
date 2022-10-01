@@ -20,6 +20,14 @@
 <script src="<?= ASSETS; ?>back/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="<?= ASSETS; ?>back/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?= ASSETS; ?>back/plugins/summernote/summernote-bs4.min.js"></script>
+<script>
+  $(function () {
+    // Summernote
+    $('#summernote').summernote()
+
+  })
+</script>
 <!-- AdminLTE App -->
 <script src="<?= ASSETS; ?>back/dist/js/adminlte.min.js"></script>
 

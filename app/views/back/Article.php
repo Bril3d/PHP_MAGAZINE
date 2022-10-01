@@ -24,7 +24,7 @@
 <!-- Default box -->
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title">Title</h3>
+    <h3 class="card-title"><a href="add" class="btn btn-info">Add</a></h3>
 
     <div class="card-tools">
       <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -36,11 +36,37 @@
     </div>
   </div>
   <div class="card-body">
-    Start creating your amazing application!
+  <div class="card-body p-0">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Image</th>
+                      <th>Description</th>
+                      <th>Update</th>
+                      <th>Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  
+                    <?php foreach($data as $c): ?>
+                     
+                    <tr>
+                      <td><?= $c->title; ?></td>
+                      <td><img src="<?= ASSETS ?>img/<?= $c->img; ?>" style="width:100px;" /></td>
+                      <td><?= $c->description; ?></td>
+                      <td><a href="update/<?= $c->id ?>" class="btn btn-warning">Update</a></td>
+                      <td><a href="delete/<?= $c->id ?>" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                      <?php endforeach; ?>
+                  </tbody>
+                </table>
+              </div>
+  </div>
   </div>
   <!-- /.card-body -->
   <div class="card-footer">
-    Footer
+
   </div>
   <!-- /.card-footer-->
 </div>

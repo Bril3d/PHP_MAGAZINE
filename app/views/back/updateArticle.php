@@ -36,24 +36,29 @@
     </div>
   </div>
   <div class="card-body">
-  <form role="form" action="postadd" method="post" enctype="multipart/form-data">
+  <form role="form" action="/adminpost/postupdate" method="post" enctype="multipart/form-data">
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Title</label>
-                    <input name="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter A Title">
+                    <input value="<?= $data->title; ?>" name="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Category Name">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Description</label>
                     <div class="card-body">
-                        <textarea name="description" id="summernote">
-                                Place <em>some</em> <u>text</u> <strong>here</strong>
+                        <textarea name="description" id="summernote" >
+                        <?= $data->description; ?>
                         </textarea>
                   </div>
+                  </div>
                   <div class="form-group">
-                    <label for="exampleInputFile">Image</label>
+                    
+                    <label for="exampleInputFile">Image</label><br>
+                    <img src="<?= ASSETS.'img/'.$data->img; ?>" width="100px" /> 
                     <div class="input-group">
+                   
                       <div class="custom-file">
-                        <input name="img" type="file" class="custom-file-input" id="exampleInputFile">
+                        
+                        <input name="img"  type="file" class="custom-file-input" id="exampleInputFile">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <div class="input-group-append">
@@ -64,9 +69,9 @@
                  
                 </div>
                 <!-- /.card-body -->
-
+                  <input type="hidden" name="id" value="<?=$data->id?>">
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Save</button>
+                  <button type="submit" class="btn btn-primary">Update</button>
                 </div>
               </form>
   </div>
@@ -82,6 +87,5 @@
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-<!-- Summernote -->
 
 <?php require_once("footer.php"); ?>
